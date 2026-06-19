@@ -33,6 +33,10 @@ test:
 
 about:
   summary: Standard library chunk redistribution. "dead battery".
+  description: |
+    The "chunk" module from the Python standard library, redistributed as a
+    standalone package (a "dead battery") for Python 3.13+, where it was removed
+    from the standard library by PEP 594.
   license: PSF-2.0
   license_family: PSF
   license_file: LICENSE

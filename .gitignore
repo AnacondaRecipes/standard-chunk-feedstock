@@ -27,3 +27,6 @@
 /output
 # Pixi's configuration
 .pixi
+
+# AnacondaRecipes automation config (un-ignore — conda-smithy ignores it by default)
+!/anaconda.yaml

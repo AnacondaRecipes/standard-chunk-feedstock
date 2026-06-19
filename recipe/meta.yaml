@@ -10,17 +10,18 @@ source:
   sha256: 4ac345d37d7e686d2755e01836b8d98eda0d1a3ee90375e597ae43aaf064d654
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  # Backport of the stdlib `chunk` module removed in Python 3.13; only needed on py>=3.13.
+  skip: true  # [py<313]
   number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python
     - setuptools >=75.0
     - pip
   run:
-    - python >={{ python_min }}
+    - python
 
 test:
   imports:
@@ -28,14 +29,16 @@ test:
   commands:
     - pip check
   requires:
-    - python {{ python_min }}
     - pip
 
 about:
   summary: Standard library chunk redistribution. "dead battery".
-  license: BSD-4-Clause
+  license: PSF-2.0
+  license_family: PSF
   license_file: LICENSE
   home: https://github.com/youknowone/python-deadlib
+  doc_url: https://github.com/youknowone/python-deadlib
+  dev_url: https://github.com/youknowone/python-deadlib
 
 extra:
   recipe-maintainers:
